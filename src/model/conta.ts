@@ -1,0 +1,107 @@
+import { keyPress } from "../../menu";
+import { colors } from "../util/collors";
+
+    // Criação de classes e metodos para conta
+    export class Conta {
+    private _numero: number;
+    private _agencia: number;
+    private _tipo: number;
+    private _titular: string;
+    private _saldo: number;
+
+    // Preencher - fazer a inicialização
+    constructor(numero: number, agencia: number, tipo: number, titular: string, saldo: number) {
+        this._numero = numero;
+        this._agencia = agencia;
+        this._tipo = tipo;
+        this._titular = titular;
+        this._saldo = saldo;
+    }
+
+    // Get (pegar) / Set (mandar) da classe conta
+    public getNumero(): number {
+        return this._numero;
+    }
+
+    public setNumero(value: number) {
+        this._numero = value;
+    }
+
+    public getAgencia(): number {
+        return this._agencia;
+    }
+
+    public setAgencia(value: number) {
+        this._agencia = value;
+    }
+
+    public getTipo(): number {
+        return this._tipo;
+    }
+
+    public setTipo(value: number) {
+        this._tipo = value;
+    }
+
+    public getTitular(): string {
+        return this._titular;
+    }
+
+    public setTitular(value: string) {
+        this._titular = value;
+    }
+
+    public getSaldo(): number {
+        return this._saldo;
+    }
+
+    public setSaldo(value: number) {
+        this._saldo = value;
+    }
+
+    // Verificar saldo da conta
+    public sacar(valor: number): boolean {
+
+        if (this._saldo < valor) {
+            console.clear();
+            console.log("\n Saldo Insuficiente!");
+            keyPress();
+            return false;
+        }
+
+        this._saldo = this._saldo - valor;
+        return true;
+    }
+
+    public depositar(valor: number): void {
+        this._saldo = this._saldo + valor;
+    }
+
+    // Verificar tipo de conta
+    public visualizar(): void {
+        let tipo: string = "";
+
+        switch (this._tipo) {
+            case 1:
+                tipo = "Conta Corrente";
+                break;
+            case 2:
+                tipo = "Conta Poupança";
+                break;
+        }
+
+        // Extrato da conta
+        console.clear();
+        console.log(colors.fg.redstrong, "- - - - - - - - - - - - - - - - ",colors.reset);
+        console.log("Dados da conta: ");
+        console.log(colors.fg.redstrong, "- - - - - - - - - - - - - - - - ",colors.reset);
+        console.log("Numero da Conta: " + this._numero);
+        console.log("Agencia: " + this._agencia);
+        console.log("Tipo de Conta: " + tipo);
+        console.log("Titular: " + this._titular);
+        console.log("Saldo: " + this._saldo.toFixed(2));
+        console.log(colors.fg.redstrong, "- - - - - - - - - - - - - - - - ",colors.reset)
+        keyPress();
+    }
+
+}
