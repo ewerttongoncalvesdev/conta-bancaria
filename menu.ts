@@ -1,24 +1,43 @@
 import ler = require("readline-sync");
 import { colors } from "./src/util/collors";
 import { Conta } from "./src/model/conta";
+import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaPoupanca } from "./src/model/ContaPoupanca";
 
 export function main() {
     let opcao: number;
 
-    // Testes (linha 9 até linha 21)
+    // Testes (linha 9 até linha 30)
     const conta: Conta = new Conta(1, 123, 1, "Adriana", 10000);
     conta.visualizar();
+    keyPress();
     conta.sacar(10500);
     conta.visualizar();
+    keyPress();
     conta.depositar(5000);
     conta.visualizar();
+    keyPress();
 
-    const conta1: Conta = new Conta(2, 321, 2, "Ewertton", 20000);
-    conta1.visualizar();
-    conta1.sacar(10500);
-    conta1.visualizar();
-    conta1.depositar(5000);
-    conta1.visualizar();
+    //  Teste de Conta Corrente
+    const contacorrente: ContaCorrente = new ContaCorrente (2, 123, 1, "Mariana", 15000, 1000);
+    contacorrente.visualizar();
+    keyPress();
+    contacorrente.sacar(2000);
+    contacorrente.visualizar();
+    keyPress();
+    contacorrente.depositar(1000);
+    contacorrente.visualizar();
+    keyPress();
+    
+    //  Teste de Conta Poupança
+    const contapoupanca: ContaPoupanca = new ContaPoupanca (3, 123, 2, "Victor", 1000, 10);
+    contapoupanca.visualizar();
+    keyPress();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    keyPress();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();
     // Fim dos testes acima
 
     while (true) {
@@ -109,6 +128,7 @@ export function sobre(): void {
 
 //  Função para apertar o enter para continuar
 export function keyPress(): void {
+    console.log(colors.fg.redstrong, "- - - - - - - - - - - - - - - - ",colors.reset)
     console.log("Pressione enter para continuar...");
     ler.prompt();
 }
