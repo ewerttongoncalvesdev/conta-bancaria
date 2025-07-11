@@ -1,5 +1,5 @@
 // Importando a classe Conta
-import { Conta } from "./conta";
+import { Conta } from "./Conta";
 
 // Criando um classe Conta Corrente com herança da classe Conta
 export class ContaCorrente extends Conta {

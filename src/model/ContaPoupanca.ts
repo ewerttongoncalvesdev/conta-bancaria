@@ -1,6 +1,6 @@
 // Importando a Classe conta
 import { keyPress } from "../../menu";
-import { Conta } from "./conta";
+import { Conta } from "./Conta";
 
 // Criando classe Conta Poupança e atribuindo a ela os atributos da classe conta
 export class ContaPoupanca extends Conta{

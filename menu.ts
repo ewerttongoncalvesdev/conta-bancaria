@@ -1,23 +1,13 @@
 import ler = require("readline-sync");
 import { colors } from "./src/util/collors";
-import { Conta } from "./src/model/conta";
 import { ContaCorrente } from "./src/model/ContaCorrente";
 import { ContaPoupanca } from "./src/model/ContaPoupanca";
+import { Conta } from "./src/model/Conta";
 
 export function main() {
     let opcao: number;
 
-    // Testes (linha 9 até linha 30)
-    const conta: Conta = new Conta(1, 123, 1, "Adriana", 10000);
-    conta.visualizar();
-    keyPress();
-    conta.sacar(10500);
-    conta.visualizar();
-    keyPress();
-    conta.depositar(5000);
-    conta.visualizar();
-    keyPress();
-
+    // Testes (linha  até linha 30)
     //  Teste de Conta Corrente
     const contacorrente: ContaCorrente = new ContaCorrente (2, 123, 1, "Mariana", 15000, 1000);
     contacorrente.visualizar();

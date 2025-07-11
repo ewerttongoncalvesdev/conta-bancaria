@@ -2,7 +2,7 @@ import { keyPress } from "../../menu";
 import { colors } from "../util/collors";
 
     // Criação de classes e metodos para conta
-    export class Conta {
+    export abstract class Conta {
     private _numero: number;
     private _agencia: number;
     private _tipo: number;
