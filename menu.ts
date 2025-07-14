@@ -12,7 +12,7 @@ export function main() {
     let contas: ContaController = new ContaController();
 
     // Variaveis auxiliares
-    let opcao, numero, agencia, tipo, saldo, limite, aniversario: number
+    let opcao, numero, agencia, tipo, saldo, limite, aniversario, valor, numeroDestino: number
     let titular: string;
     const tiposContas = [`Conta Corrente`, `Conta Poupanca`];
 
@@ -171,16 +171,52 @@ export function main() {
                 keyPress()
                 break;
 
+            // Efetuar saque
             case 6:
                 console.log("\nEfetuar saque\n");
+
+                console.log(`\nDigite o numero da Conta: `);
+                numero = ler.questionInt(``);
+
+                console.log(`\nDigite o valor do Saque (R$): `);
+                valor = ler.questionFloat(``);
+
+                contas.sacar(numero, valor);
+
+                keyPress()
                 break;
 
+            // Efetuar Deposito
             case 7:
                 console.log("\nEfetuar deposito\n");
-                break;
 
+                console.log(`Digite o numero da conta: `);
+                numero = ler.questionInt(``);
+
+                console.log(`\nDigite o valor do Deposito (R$): `);
+                valor = ler.questionFloat(``);
+
+                contas.depositar(numero, valor);
+
+                keyPress()
+                break;
+            
+            // Efetuar Transferencia
             case 8:
                 console.log("\nEfetuar transferencia entre contas\n");
+
+                console.log(`Digite o numero da Conta origem: `);
+                numero = ler.questionInt(``);
+
+                console.log(`Digite o numero da Conta de Destino: `);
+                numeroDestino = ler.questionInt(``);
+
+                console.log(`\nDigite o valor para Transferir (R$): `);
+                valor = ler.questionFloat(``);
+
+                contas.transferir(numero, numeroDestino, valor);
+
+                keyPress()
                 break;
             default:
                 console.log("\nOpção Inválida!\n");

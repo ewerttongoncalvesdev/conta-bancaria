@@ -50,25 +50,56 @@ export class ContaController implements ContaRepository {
     deletar(numero: number): void {
         let buscaConta = this.buscarNoArray(numero);
 
-        if(buscaConta != null){
+        if (buscaConta != null) {
             this.listarContas.splice(this.listarContas.indexOf(buscaConta), 1);
             console.log(`\nA Conta numero: ` + numero + ` foi apagada com sucesso!`);
 
-        }else {
+        } else {
             console.log(`\nA Conta numero: ` + numero + ` não foi encontrada!`);
         }
     }
 
+    // Metodo para sacar
     sacar(numero: number, valor: number): void {
-        throw new Error("Method not implemented.");
+        let conta = this.buscarNoArray(numero);
+
+        if (conta != null) {
+
+            if (conta.sacar(valor) == true) {
+                console.log(`\nO Saque na Conta numero: ` + numero + ` foi realizado com sucesso!`);
+            }
+        } else {
+            console.log(`\nA Conta numero: ` + ` não foi encontrada!`);
+        }
     }
 
+    // Metodo Depositar
     depositar(numero: number, valor: number): void {
-        throw new Error("Method not implemented.");
+        let conta = this.buscarNoArray(numero);
+
+        if (conta != null) {
+            conta.depositar(valor);
+            console.log(`\nO Deposito na Conta numero: ` + numero + ` foi realizado com sucesso!`);
+
+        } else {
+            console.log(`\nA Conta numero: ` + numero + ` não foi encontrada!`);
+        }
     }
 
+    // Metodo de transferencia
     transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
-        throw new Error("Method not implemented.");
+        let contaOrigem = this.buscarNoArray(numeroOrigem);
+        let contaDestino = this.buscarNoArray(numeroDestino);
+
+        if (contaOrigem != null && contaDestino != null) {
+            if(contaOrigem.sacar(valor) == true){
+            contaDestino.depositar(valor);
+            console.log(`\nTransferencia da Conta numero: ` + numeroOrigem + ` para a conta numero ` + numeroDestino + ` foi efetuado com sucesso!`);
+
+            }
+        } else {
+            console.log(`\nA Conta numero ` + numeroOrigem + ` e / ou a conta numero: ` + numeroDestino + ` não foram encontradas!`);
+        }
     }
 
     // Gerar número da conta automatico
