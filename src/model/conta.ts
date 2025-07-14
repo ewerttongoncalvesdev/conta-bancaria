@@ -91,7 +91,7 @@ import { colors } from "../util/collors";
         }
 
         // Extrato da conta
-        console.clear();
+        
         console.log(colors.fg.redstrong, "- - - - - - - - - - - - - - - - ",colors.reset);
         console.log("Dados da conta: ");
         console.log(colors.fg.redstrong, "- - - - - - - - - - - - - - - - ",colors.reset);
